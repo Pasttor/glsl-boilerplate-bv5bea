@@ -30,6 +30,9 @@ export default class Sketch {
     this.renderer.setPixelRatio(2);
     this.container.appendChild(this.renderer.domElement);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableDamping = false;
+    this.controls.enablePan = true;
+    this.controls.enableZoom = true;
 
     this.time = 0;
     this.resize();
@@ -65,6 +68,7 @@ export default class Sketch {
       vertexShader,
 
       fragmentShader,
+      side: THREE.DoubleSide,
     });
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
